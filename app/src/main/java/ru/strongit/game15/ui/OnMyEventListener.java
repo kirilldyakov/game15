@@ -1,4 +1,4 @@
-package ru.strongit.game15;
+package ru.strongit.game15.ui;
 
 public interface OnMyEventListener {
 

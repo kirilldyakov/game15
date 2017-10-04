@@ -8,9 +8,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import ru.strongit.game15.ui.Game;
+
 public class MainActivity extends AppCompatActivity {
 
-    float dX, dY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,49 +40,10 @@ public class MainActivity extends AppCompatActivity {
 //        game.moveRight(2, 1);
 //        Log.d("TAG", "onCreate: " + "\n" + game.toString());
 
-        TextView tv = (TextView) findViewById(R.id.k07);
-        tv.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                float x, y;
-                switch (event.getAction()) {
 
-                    case MotionEvent.ACTION_DOWN:
+        //TextView tv = (TextView) findViewById(R.id.k07);
+        //tv.setOnTouchListener(otListener);
 
-                        dX = view.getX() ;//- event.getRawX();
-                        dY = view.getY() - event.getRawY();
-                        break;
-
-                    case MotionEvent.ACTION_MOVE:
-                        x = dX;
-                        y = event.getRawY() + dY;
-                        view.animate()
-                                //.x(event.getRawX() + dX)
-                                .x(x)
-                                .y(y)
-                                .setDuration(0)
-                                .start();
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        x= view.getX();
-                        y =view.getY();
-                        if (view.getY()>250)
-                            y=400;
-                        else
-                            y=50;
-                        view.animate()
-                                //.x(event.getRawX() + dX)
-                                .x(x)
-                                .y(y)
-                                .setDuration(100)
-                                .start();
-                        break;
-                    default:
-                        return false;
-                }
-                return true;
-            }
-        });
     }
 
 

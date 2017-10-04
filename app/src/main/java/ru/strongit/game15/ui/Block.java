@@ -1,13 +1,19 @@
-package ru.strongit.game15;
+package ru.strongit.game15.ui;
 
 import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import ru.strongit.game15.R;
 
 /**
  * Created by user on 03.10.17.
  */
 
-public class Block extends LinearLayout{
+public class Block extends FrameLayout {
 
     private static OnMyEventListener onEventListener;
 
@@ -23,17 +29,35 @@ public class Block extends LinearLayout{
     private int Col;
 
     private boolean DownMoveAble = false;
-
     private boolean UpMoveAble = false;
-
     private boolean RightMoveAble = false;
-
     private boolean LeftMoveAble = false;
 
+    public Block(Context context) {
+        super(context);
+        initializeViews(context);
+
+    }
     public Block(Context context, int number) {
         super(context);
-        Number = number;
+        initializeViews(context);
+        Number =number;
+
     }
+
+    public Block(Context context,
+                 AttributeSet attrs) {
+        super(context, attrs);
+        initializeViews(context);
+    }
+    public Block(Context context,
+                 AttributeSet attrs,
+                 int defStyle) {
+        super(context, attrs, defStyle);
+        initializeViews(context);
+    }
+
+
 
     public Block(Context context, int number, int row, int col) {
         super(context);
@@ -42,6 +66,26 @@ public class Block extends LinearLayout{
         Row = row;
         Col = col;
     }
+
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+
+        TextView tv = findViewById(R.id.blockNumber);
+        tv.setText(String.valueOf(this.Number));
+
+    }
+
+
+    private void initializeViews(Context context) {
+        LayoutInflater inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.block_view, this);
+
+    }
+
+
 
     public int getNumber() {
         return Number;

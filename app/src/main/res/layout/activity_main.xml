@@ -14,12 +14,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <FrameLayout
+    <ru.strongit.game15.ui.Game
         android:id="@+id/field"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         >
-        <TextView
+        <ru.strongit.game15.ui.Block
             android:id="@+id/k07"
             android:background="@android:color/holo_blue_dark"
             android:textColor="@android:color/white"
@@ -29,7 +29,7 @@
             android:text="7"
             android:layout_gravity="center"
             android:gravity="center"/>
-    </FrameLayout>
+    </ru.strongit.game15.ui.Game>
 
 
 </android.support.constraint.ConstraintLayout>
