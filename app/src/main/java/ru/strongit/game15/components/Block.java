@@ -1,10 +1,9 @@
-package ru.strongit.game15.ui;
+package ru.strongit.game15.components;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import ru.strongit.game15.R;
@@ -15,9 +14,9 @@ import ru.strongit.game15.R;
 
 public class Block extends FrameLayout {
 
-    private static OnMyEventListener onEventListener;
+    private static OnMoveEventListener onEventListener;
 
-    public void setOnEventListener(OnMyEventListener listener) {
+    public void setOnEventListener(OnMoveEventListener listener) {
 
         onEventListener = listener;
 

@@ -1,4 +1,4 @@
-package ru.strongit.game15.ui;
+package ru.strongit.game15.components;
 
 
 import android.content.Context;
@@ -28,28 +28,28 @@ public class Game extends FrameLayout {
     public Block block_1 = new Block(getAppContext(), 1);
     Block block_2 = new Block(mContext, 2);
     public Block block_3 = new Block(mContext, 3);
-    Block block_4 = new Block(mContext, 4);
-    Block block_5 = new Block(mContext, 5);
-    Block block_6 = new Block(mContext, 6);
+    public Block block_4 = new Block(mContext, 4);
+    public Block block_5 = new Block(mContext, 5);
+    public Block block_6 = new Block(mContext, 6);
     public Block block_7 = new Block(mContext, 7);
     public Block block_8 = new Block(mContext, 8);
-    Block block_9 = new Block(mContext, 9);
-    Block block_10 = new Block(mContext, 10);
-    Block block_11 = new Block(mContext, 11);
+    public Block block_9 = new Block(mContext, 9);
+    public Block block_10 = new Block(mContext, 10);
+    public Block block_11 = new Block(mContext, 11);
     public Block block_12 = new Block(mContext, 12);
-    Block block_13 = new Block(mContext, 13);
-    Block block_14 = new Block(mContext, 14);
-    Block block_15 = new Block(mContext, 15);
-    Block block_0 = new Block(mContext, 0);
+    public Block block_13 = new Block(mContext, 13);
+    public Block block_14 = new Block(mContext, 14);
+    public Block block_15 = new Block(mContext, 15);
+    public Block block_0 = new Block(mContext, 0);
 
 
     Block[][] field =
-            {{block_1, block_2, block_3, block_4}
-                    , {block_5, block_6, block_7, block_8}
-                    , {block_9, block_10, block_11, block_12}
+                     {{block_1,  block_2,  block_3,  block_4}
+                    , {block_5,  block_6,  block_7,  block_8}
+                    , {block_9,  block_10, block_11, block_12}
                     , {block_13, block_14, block_15, block_0}};
 
-    OnMyEventListener listener;
+    OnMoveEventListener listener;
 
     public Game(Context context) {
         super(context);
@@ -85,7 +85,7 @@ public class Game extends FrameLayout {
     }
 
     public void init() {
-        listener = new OnMyEventListener() {
+        listener = new OnMoveEventListener() {
             @Override
             public void onMoveDownEvent(Block block) {
                 moveDown(getBlockRow(block), getBlockCol(block));
@@ -134,15 +134,14 @@ public class Game extends FrameLayout {
 
                     case MotionEvent.ACTION_DOWN:
 
-                        dX = view.getX();//- event.getRawX();
+                        dX = view.getX()- event.getRawX();
                         dY = view.getY() - event.getRawY();
                         break;
 
                     case MotionEvent.ACTION_MOVE:
-                        x = dX;
+                        x = event.getRawX() + dX;
                         y = event.getRawY() + dY;
                         view.animate()
-                                //.x(event.getRawX() + dX)
                                 .x(x)
                                 .y(y)
                                 .setDuration(0)
@@ -173,8 +172,12 @@ public class Game extends FrameLayout {
 
 
         Game game = (Game)this;
-        game.addView(block_1,200,200);
+        game.setFocusable(true);
+
+        game.addView(block_1,100, 100);
+        game.addView(block_2,100, 100);
         block_1.setOnTouchListener(otListener);
+        block_2.setOnTouchListener(otListener);
     }
 
     int getBlockRow(Block block) {

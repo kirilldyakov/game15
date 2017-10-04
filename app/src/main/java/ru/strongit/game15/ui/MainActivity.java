@@ -1,14 +1,12 @@
-package ru.strongit.game15;
+package ru.strongit.game15.ui;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.TextView;
 
-import ru.strongit.game15.ui.Game;
+import ru.strongit.game15.R;
+import ru.strongit.game15.components.Game;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Context ctx = getApplicationContext();
-        Game game = new Game(ctx);
+        Game game = (Game) findViewById(R.id.field);
         game.init();
         Log.d("TAG", "onCreate: " + "\n" + game.toString());
         game.block_12.moveDown();
