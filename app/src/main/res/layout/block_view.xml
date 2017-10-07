@@ -8,7 +8,6 @@
         android:layout_width="1200dp"
         android:layout_height="120dp"
         android:textSize="24sp"
-        android:text="A"
         android:gravity="center"
         android:layout_gravity="center"/>
 

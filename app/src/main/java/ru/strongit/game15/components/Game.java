@@ -134,7 +134,8 @@ public class Game extends FrameLayout {
 
                     case MotionEvent.ACTION_DOWN:
 
-                        dX = view.getX()- event.getRawX();
+                        dX = view.getX() - event.getRawX();
+
                         dY = view.getY() - event.getRawY();
                         break;
 
@@ -150,12 +151,11 @@ public class Game extends FrameLayout {
                     case MotionEvent.ACTION_UP:
                         x = view.getX();
                         y = view.getY();
-                        if (view.getY() > 250)
+                        if (y > 250)
                             y = 400;
                         else
                             y = 50;
                         view.animate()
-                                //.x(event.getRawX() + dX)
                                 .x(x)
                                 .y(y)
                                 .setDuration(300)
@@ -170,12 +170,12 @@ public class Game extends FrameLayout {
         };
 
 
-
         Game game = (Game)this;
         game.setFocusable(true);
 
         game.addView(block_1,100, 100);
         game.addView(block_2,100, 100);
+
         block_1.setOnTouchListener(otListener);
         block_2.setOnTouchListener(otListener);
     }

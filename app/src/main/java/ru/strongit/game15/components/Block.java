@@ -64,6 +64,7 @@ public class Block extends FrameLayout {
         Number = number;
         Row = row;
         Col = col;
+
     }
 
 
@@ -72,10 +73,17 @@ public class Block extends FrameLayout {
         super.onFinishInflate();
 
         TextView tv = findViewById(R.id.blockNumber);
-        tv.setText(String.valueOf(this.Number));
+        tv.setText(String.valueOf("X"));
 
     }
 
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        TextView tv = findViewById(R.id.blockNumber);
+        tv.setText(String.valueOf(String.valueOf(this.Number)));
+
+    }
 
     private void initializeViews(Context context) {
         LayoutInflater inflater = (LayoutInflater) context
